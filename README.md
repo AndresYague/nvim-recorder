@@ -84,7 +84,9 @@ require("recorder").setup {
 	},
 
 	-- Enable breakpoint mapping
-	-- If disabled, then addBreakPoint does not consume that key
+	-- If disabled, then addBreakPoint does not consume that key in normal mode,
+	-- it does not interface with the dap, and it does not notify of a breakpoint
+	-- being added, but the breakpoint still works in the macros
 	enableBreakPointMap = true,
 
 	-- Clears all macros-slots on startup.
