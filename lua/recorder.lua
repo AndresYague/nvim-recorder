@@ -278,6 +278,7 @@ end
 ---@field dynamicSlots string 2 states we could choose from:
 ---static   -> use static slots
 ---rotate   -> through letters specified in slots[] if end is encountered it goes(overwrite) from start
+---@field enableBreakPointMap boolean whether to enable the mapping of the breakPointKey
 ---@field clear boolean whether to clear slots/registers on setup
 ---@field timeout number Default timeout for notification
 ---@field mapping maps individual mappings
@@ -322,6 +323,7 @@ function M.setup(userConfig)
 			addBreakPoint = "##",
 		},
 		dapSharedKeymaps = false,
+		enableBreakPointMap = true,
 		clear = false,
 		logLevel = vim.log.levels.INFO,
 		lessNotifications = false,
@@ -380,7 +382,9 @@ function M.setup(userConfig)
 	dapSharedKeymaps = config.dapSharedKeymaps or false
 	local breakPointDesc = dapSharedKeymaps and dapSharedIcon .. "Breakpoint"
 		or icon .. "Insert Macro Breakpoint."
-	keymap("n", breakPointKey, addBreakPoint, { desc = breakPointDesc })
+	if config.enableBreakPointMap then
+		keymap("n", breakPointKey, addBreakPoint, { desc = breakPointDesc })
+	end
 	local playDesc = dapSharedKeymaps and dapSharedIcon .. "Continue/Play" or icon .. "Play Macro"
 	keymap("n", config.mapping.playMacro, playRecording, { desc = playDesc })
 end

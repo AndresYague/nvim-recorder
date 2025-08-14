@@ -83,6 +83,10 @@ require("recorder").setup {
 		addBreakPoint = "##",
 	},
 
+	-- Enable breakpoint mapping
+	-- If disabled, then addBreakPoint does not consume that key
+	enableBreakPointMap = true,
+
 	-- Clears all macros-slots on startup.
 	clear = false,
 
