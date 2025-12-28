@@ -11,6 +11,7 @@ local config, macroRegs, slotIndex, defaultLogLevel, breakCounter, firstRun
 -- Use this function to normalize keycodes (which can have multiple
 -- representations, e.g. <C-f> or <C-F>).
 ---@param mapping string
+---@return string
 local normalizeKeycodes = function(mapping)
 	return fn.keytrans(vim.api.nvim_replace_termcodes(mapping, true, true, true))
 end
@@ -280,7 +281,6 @@ end
 ---rotate   -> through letters specified in slots[] if end is encountered it goes(overwrite) from start
 ---@field enableBreakPointMap boolean whether to enable the mapping of the breakPointKey
 ---@field clear boolean whether to clear slots/registers on setup
----@field timeout number Default timeout for notification
 ---@field mapping maps individual mappings
 ---@field logLevel integer log level (vim.log.levels)
 ---@field lessNotifications boolean plugin is less verbose, shows only essential or critical notifications
