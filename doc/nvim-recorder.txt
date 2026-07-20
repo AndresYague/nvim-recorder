@@ -1,5 +1,5 @@
 *nvim-recorder.txt*
-                                       For Neovim    Last change: 2026 June 22
+                                       For Neovim    Last change: 2026 July 20
 
 ==============================================================================
 Table of Contents                            *nvim-recorder-table-of-contents*
@@ -99,6 +99,12 @@ CONFIGURATION ~
             -- ⚠️ this should be a string you don't use in insert mode during a macro
             addBreakPoint = "##",
         },
+    
+        -- Enable breakpoint mapping
+        -- If disabled, then addBreakPoint does not consume that key in normal mode,
+        -- it does not interface with the dap, and it does not notify of a breakpoint
+        -- being added, but the breakpoint still works in the macros
+        enableBreakPointMap = true,
     
         -- Clears all macros-slots on startup.
         clear = false,
